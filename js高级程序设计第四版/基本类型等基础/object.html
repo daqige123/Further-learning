@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象、类</title>
+</head>
+
+<body>
+    <script>
+        function Person(age, name) {
+            this.name = name;
+            this.age = age;
+            sayName = function () {
+                console.log(this.name);
+            }
+        }
+        Person1 = new Person();
+        Person2 = new Person();
+        console.log(Person1.sayName() === Person2.sayName()) // false;
+        //  New 操作符创建对象的5步骤
+        // 1. 申请一个空间个给新实例
+        // 2. 将constructor指向构造函数的prototupe;
+        // 3. 将this指向新实例对象
+        // 4. 执行构造函数里面的代码， 就是给实例添加属性和属性值。
+        // 5.  返回该对象
+        // 可以使用Object.keys(obj)来返回该对象所有可枚举属性名称的字符串数组。
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String API</title>
+</head>
+
+<body>
+    <script>
+        //  1.字符串的操作方法： contact == + , 
+        //  slice()最好用，功能更多，
+        let str = "   hello, daqige!   ";
+        console.log("这就是原来的字符串值：" + str);
+        // split, trim.
+        console.log(str.trim());
+        console.log(str.slice(5, 10));
+        let str1 = "0123456";
+        console.log(str1.slice(-2)) // 56, substring() 是不接受负数的。
+        console.log(str1.slice(-3, -1))  // 45
+        console.log(str1.substr(-3, 3));  // 456
+
+        //  2.位置方法： indexOf()从前往后找,  lastIndexOf() 从后往前找; includes("string");
+        let str2 = "Hello, world!";
+        console.log(str2.indexOf("o")); // 4
+        console.log(str2.lastIndexOf("o"));  // 8
+        // 3. 字符串的  trim(), repeat(n) 拼接n次， padStart(9, '.');在前面填充， padEnd(9,' ')在后面填充。
+
+        // 4.字符串的解构与遍历
+        let message = "abcd";
+        let stringIterator = message[Symbol.iterator]();
+        console.log(stringIterator.next());
+        console.log(stringIterator.next());
+        console.log(stringIterator.next());
+        console.log([...message]); // ...表示将可迭代对象解构
+
+        // 字符串的模式匹配 match() 跟 RegExp的exec()一样。
+        // search(), replace,
+
+    </script>
+</body>
+
+</html>

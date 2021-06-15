@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapAndSet</title>
+</head>
+
+<body>
+    <script>
+        // 1.map 专门用来保存键值对的。其实在ES6之间使用Object来代替Map的, Object里面的属性是没有数顺序的。
+        // 2.map的操作方法。 delete("key")删除一个值， clear()清楚全部。m.size属性。
+        /* map.set()用来添加键值对，相当于java里面的input()。
+            set() == input(), has() == containsKey(), get() == getValue(),  
+            keys()==getKeyValues()   values == getValueSet();  m.entries()
+            */
+        let map = new Map();
+        map.set("key1", "value1")
+            .set("key2", "value2");
+        let map1 = new Map([
+            ["key11", "value11"],
+            ["key21", "value21"]
+        ]);
+        console.log(map.delete("value1"));
+        console.log(Array.from(map.entries()));
+        console.log(map.keys());
+        console.log(map.size);
+        map.forEach((val, key) => console.log(`${key} -> ${val}`));
+        map1.forEach((val, key) => console.log(`${key} -> ${val}`));
+
+        // 3.Set 是加强后的map????
+        /*
+            let s = new Set(); 初试化后可以使用add()添加值， 用has()查询，size， delete(), clear().
+        */
+        const s = new Set(["val1", "val2", "val3"]);
+        s.add("val4");
+        console.log(s);
+
+        // 4.Set的迭代  values() == keys(), entries()里面的key，value相同的。 
+        for (let item of s.values())
+            console.log(item);
+
+        // 5.Set的回调 可以使用forEach()来回调。
+        s.forEach((item, index) => console.log(`${item}---> ${index}`));
+
+    </script>
+</body>
+
+</html>

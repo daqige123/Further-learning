@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <script>
+        // 1.数组有两个静态方法，from()将类数组结构转换为数组实例, of()将一组参数转换为数组实例。
+        // 用from将 String， set, map转换为数组
+        console.log(Array.from("daqige tql!")); // ["d", "a"....]
+        let map = new Map().set(1, 2).set(3, 4);
+        console.log(Array.from(map));    // [[1,2], [3,4]]
+        let s = new Set().add(1).add(2).add(3); //
+        console.log(Array.from(s)); // [1, 2, 3]
+
+        // 2.数组的检索。数组暴露了3个方法： keys(), values(), entries();
+        let a = ["foo", "bar", "baz", "qux"];
+        console.log(Array.from(a.keys()));
+        console.log(Array.from(a.values()));
+        console.log(Array.from(a.entries()));
+        for (const [idx, items] of a.entries()) {
+            console.log(idx);
+            console.log(items);
+        }
+        // 3.复制和填充
+        let zeros = [0, 0, 0, 0, 0];
+        zeros.fill(7, 1, 3); // 用7填充索引1,2；
+        zeros.copyWithin(4, 0, 3) // 将0-3的元素复制插入到索引4开始的位置。
+
+        // 4. 数组的转换 toString() 数组扁平化里面就可以用这个。
+        // 5. 栈和队列。push(), pop()类似栈方法; push(), shift()队首元素。unshift()在数组开头添加任意多的元素。
+        // 6. 排序。reverse(), sort(),sort会将数组的每一项转化为string来进行排序，即使数组里面的是数字。
+        function compare(value1, value2) {  // sort的比较函数
+            // 比较函数原则， 如果第一个参数应该排在第二个参数的前面 那么就返回负值
+            if (value1 < value2) return -1;
+            else if (value1 > value2) return 1;
+            else return 0;
+            // 简化版 因为第二个要排在第一个的后面 那么 return value2 - value1; 就行了。
+        }
+
+        // 7.数组的操作。 slice(),跟字符串的类似，切片。
+        /* 在数组中间插值 splice(); 
+           splice(a, b , c) a是要删除元素的起始位置,b是要删除元素的个数,c要插入的元素值，还可以有d, e。
+        */
+        let a1 = [0, 1, 2, 3, 4, 5];
+        a1.splice(1, 0, "daqoge", "tql");
+
+        // 8. 数组的搜索和位置 indexOf(), lastIndexOf()跟字符串的一样。includes() 返回true,false;
+        // finde(element, index, array) 元素，元素的索引，数组本身。
+        let str1 = "daqige666";
+        console.log(str1.includes("daqige1"));
+        // finde(element, index, array) 元素，元素的索引，数组本身。这个函数就是可以用来传入函数，用来写条件。
+        let people = [
+            { name: "Matt", age: 20 },
+            { name: "daqige", age: 18 }
+        ];
+        // alert(people.findIndex((element, index, array) => element.age < 19));
+
+        // 9.数组的迭代方法（条件迭代）
+        /* 1. every(item, index, array) 每一个元素都满足条件，才返回true。 some(), 有一个或者多个都返回true;
+           2. forEach() 对数组每一项都运行传入的函数，没有返回值,就是一个简单的for遍历。map(),会返回每一项运行的结果组成的数组。
+           3.filter() 对数组进行条件过滤，返回满足条件的item.
+        */
+        let arr9 = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+        console.log(arr9.some((item, index, array) => item > 5)); // false
+        console.log(arr9.forEach((item, index, array) => item + 1)); // undefined
+        console.log(arr9.map((item, index, array) => item + 1));  //234565432
+        console.log(arr9.filter((item, index, array) => item > 2));
+        // 注意map 是执返回函数执行的结果， fiter只能是数组中的元素。实验结果表明index, array可以不用写上。
+
+        // 10.数组的归并  reduce(), reduceRight()从右向左遍历元素。
+        //redece(pre, cur, index, array) pre上一个归并值， 当前元素， 当前元素索引， 数组本身。
+        let arr10 = [1, 2, 3, 4];
+        console.log(arr10.reduce((pre, cur, index, arr10) => { return pre + cur; }));
+    </script>
+
+</body>
+
+</html>

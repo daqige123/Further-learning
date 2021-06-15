@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise测试</title>
+</head>
+
+<body>
+    <script>
+
+        setTimeout(function () {
+            console.log("第一个回调！");
+            setTimeout(function () {
+                console.log("第二个回调！");
+                setTimeout(function () {
+                    console.log("这是第3个回调！")
+                    setTimeout(console.log("这是第四个回调！"), 1000)
+                }, 1000)
+            }, 1000)
+        }, 1000);
+        let p1 = new Promise((p1, p2) => {
+            setTimeout(p1, 1000)
+        }).then(function () {
+            console.log("第1个promise回调！")
+            return new Promise((p1, p2) => { setTimeout(p1, 1000) })
+        }).then(function () {
+            console.log("第2个promise回调！")
+            return new Promise((p1, p2) => { setTimeout(p1, 1000) })
+        }).then(function () {
+            console.log("第3个promise回调！")
+            return new Promise((p1, p2) => { setTimeout(p1, 1000) })
+        }).then(function () {
+            console.log("第4个promise回调！")
+            return new Promise((p1, p2) => { setTimeout(p1, 1000) })
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

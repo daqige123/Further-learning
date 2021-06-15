@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this2</title>
+</head>
+
+<body>
+    <script>
+
+        console.log(Test)    //  function Test  函数声明提升
+
+        var obj = {        //  
+            key: 1
+        }
+
+        // var Test = 123;
+
+        console.log(Test);  // Test 123
+
+        function Test(key) {
+            this.obj = { key }
+        }
+
+        Test.prototype.getObjKey = function () {
+            return this.obj.key;
+        }
+
+        var { getObjKey } = new Test(3);  // 对象解构
+
+        console.log(getObjKey());   // return this.obj.key 1   
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+</head>
+
+<body>
+    <script>
+        //1.  判断字符串是否为数字、字母、下划线组成
+        function rex1(str) {
+            return /^\w+$/g.test(str);
+        }
+        let str1 = "1234abd_ ";
+        console.log(rex1(str1));
+
+        // 2. 找出数字
+        let str2 = "wo cao 11223";
+        pattern2 = /\d+\d$/g;
+        console.log(pattern2.exec(str2));
+
+        //实现trim()函数
+        let pattern3 = /^\s+/;
+        let str3 = "     wo men bu yi yang!     ";
+        function myTrim(str) {
+            let pattern3 = /^\s/;
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+        console.log(myTrim(str3));
+
+        // 实现String.trim()
+        String.prototype.myTrim = function () {
+            return this.replace(/(^\s*)|(^\s$)/g, "");
+        }
+        console.log(str3.myTrim());
+
+        // 返回单词的最大长度
+
+        let str4 = " hello world woissada20lmaasmafkc sdkajkda";
+        // pattern4.exec(str4);
+
+        function mySplit(str) {
+            let strs = str.split(/\d+/g);
+            let max = 0;
+            console.log("strs:" + strs);
+            for (let i = 0; i < strs.length; i++) {
+                let temps = strs[i].split(" ");
+                console.log(temps);
+                for (item of temps) {
+                    if (item.length > max)
+                        max = item.length;
+                }
+            }
+            return max;
+        }
+        console.log(mySplit(str4));
+    </script>
+
+</html>

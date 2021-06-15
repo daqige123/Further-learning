@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二叉树的前序， 中序， 后序，层序遍历</title>
+</head>
+
+<body>
+    <script>
+        function TreeNode(val, right, left) {
+            this.val = (val === undefined ? null : val);
+            this.right = (right === undefined ? null : right);
+            this.left = (left === undefined ? null : left);
+        }
+
+        // 前序遍历
+        function preOrder(root) {
+            let res = [];
+            if (root === null) return res;
+            let cur = root;
+            let stack = [];
+            while (cur !== null || stack.length !== 0) {
+                if (cur !== null) {
+                    res.push(cur.val);
+                    stack.push(cur.right);
+                    cur = cur.left;
+                } else {
+                    cur = stack.pop();
+                }
+            }
+            return res;
+        }
+
+        // 中序遍历
+        function inOrder(root) {
+            let res = [];
+            if (root === null) return res;
+            let cur = root;
+            let stack = [];
+            while (cur !== null || stack.length !== 0) {
+                if (cur !== null) {
+                    stack.push(cur);
+                    cur = cur.left;
+                } else {
+                    cur = stack.pop();
+                    res.push(cur.val);
+                    cur = cur.right;
+                }
+            }
+            return res;
+        }
+
+        // 后续遍历
+        function postOrder(root) {
+            let res = [];
+            if (root === null) return res;
+            let cur = root;
+            let stack = [];
+            while (cur !== null || stack.length !== 0) {
+                if (cur !== null) {
+                    res.unshift(cur.val);
+                    stack.push(cur);
+                    cur = cur.right;
+                } else {
+                    cur = stack.pop();
+                    cur = cur.left;
+                }
+            }
+            return res;
+        }
+
+        // 层序遍历
+
+    </script>
+</body>
+
+</html>

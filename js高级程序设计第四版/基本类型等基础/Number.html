@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number API</title>
+</head>
+
+<body>
+    <script>
+        // 1.基本方法：1.valueOf(), 2.toLocaleString(), 3.toString()
+        let num = 10.1;
+        console.log(num.valueOf());
+        console.log(num.toLocaleString());
+        console.log(num.toString(2));  // 1010.0001100110011001100110011001100110011001100110011
+        // 2. toFixed()返回包含小数点位数的数值字符串。
+        let num1 = 10.008;
+        console.log(num1.toFixed(2));  // 这种就直接四舍五入。
+        // 3. toExponnential()， toPrecision() 科学记数法；
+    </script>
+
+</body>
+
+</html>

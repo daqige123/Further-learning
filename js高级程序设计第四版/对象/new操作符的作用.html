@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new 操作符的作用</title>
+</head>
+<!-- 1. 给实例分配空间
+    2.[[Prototype]] => Person.prototype
+    3. 将构造函数里面的this指向 => 新创建的实例。
+    4. 执行代码，这样新实例就有了属性值了
+    5. 还得将新实例返回给变量，如果构造函数里面有返回值，那就返回构造函数里面的返回值。 -->
+
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        person1 = Person("daqige", 24);
+        console.log(window.name);  // daqige
+        console.log(window.age);  // 24
+        // 所以new 干了什么事？
+        // 1. 给实例分配空间
+        // 2.[[Prototype]] => Person.prototype
+        // 3. 将函数里面的this指向 => 新创建的实例。
+        // 4. 执行代码，这样新实例就有了属性值了
+        // 5. 还得将新实例返回给变量，如果构造函数里面有返回值，那就返回构造函数里面的返回值。
+    </script>
+</body>
+
+</html>

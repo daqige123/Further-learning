@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包，私有变量</title>
+</head>
+
+<body>
+    <script>
+        function MyObject() {  // 这是一个构造函数
+            let privateVariable = 10;  // 外面的函数是访问不到的
+            function privateFunction() {  // 外面的函数是访问不到的
+                console.log("shiyouhanmshui1");
+            }
+            this.publicMethod = function () {  // 这个函数就是一个闭包
+                console.log(++privateVariable);
+                privateFunction();
+            }
+        }
+
+        MyObject();   //  这里一执行，publicMethod就绑到windos上了
+        window.publicMethod();  // 11  shsi  // 由于作用域链的原因，MyObject的变量对象不会被立即销毁。
+        window.publicMethod();  // 12  ...
+        window.publicMethod();   //13  ...
+
+        // 模块模式 --- 单例模式
+        let singe = function () {
+            let privateVariable = 10;  // 私有变量
+            function privateFunction() {  // 私有函数
+                console.log("shiyouhanmshui1");
+            }
+            return {
+                name: "daqige",
+                publicMethod() {
+                    privateVariable++;
+                    return privateFunction();
+                }
+            }
+        }()
+
+
+
+    </script>
+</body>
+
+</html>

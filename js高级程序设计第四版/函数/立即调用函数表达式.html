@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即调用函数表达式</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<!-- 目前发现立即调用函数表达式就是用来解决以前没有块级作用域的问题的 -->
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        let divs = document.querySelectorAll('div');
+        // for (var i = 0; i < divs.length; i++) {
+        //     divs[i].addEventListener('click', () => { console.log(i) });
+        // }    // 这样点击的全是5  因为没有块级作用域，所以都是调用的全局的最后的i
+
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].addEventListener('click', (function (arg) {
+                return function () { console.log(arg) };
+            })(i));
+        }
+
+
+    </script>
+</body>
+
+</html>

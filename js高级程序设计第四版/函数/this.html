@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this考题</title>
+</head>
+
+<body>
+    <script>
+        window.name = 'ByteDance';
+
+        function A() {
+            this.name = 123;
+        }
+        
+        A.prototype.getA = function () {
+            console.log(this);
+            return this.name + 1;
+        }
+
+        let a = new A();
+
+        let funcA = a.getA;
+        console.log(funcA());  
+        
+        //  console.log(this)   window;   return this.name +1; ByteDance1
+
+        // 这个funCA 不是实例对象a调用的哦，是在全局上下文window里面执行的。
+
+        // 所以答案是 先输出console.log(this), window, 后面打印 return 的window.name + 1, ByteDance1；
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步函数测试</title>
+</head>
+
+<body>
+    <script>
+        // async function foo() {
+        //     console.log(1);
+        //     return 3;
+        //     // 这里会被包装成 return Promise.resolve(3);<===> return New Promise((resolve, reject)=>resolve(3))
+        // }
+        // // 因为返回的是一个期约，所以我们可以使用.then()来处理返回值
+        // foo().then((data) => console.log(data)); // 这一步就是异步了，并且还属于微事件，要跟在宏事件后面。
+        // console.log(2);
+
+        async function f1() {
+            let p = await new Promise((resolve, reject) => setTimeout(resolve, 2000, 100)); // 注意resolve不能加括号否则立即执行了
+            console.log("yyds");
+        }
+        f1();
+    </script>
+</body>
+
+</html>

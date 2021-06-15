@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承回顾</title>
+</head>
+
+<body>
+    <script>
+        // 一、原型链继承
+        function SuperType(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        SuperType.prototype.sayName = function () { console.log(this.name) };
+        function SubType() {
+        }
+        SubType.prototype = new SuperType();
+
+        // 二、盗用构造函数
+        function SubType() {
+            SuperType.call(this, name);
+        }
+        // 三， 组合继承
+        function SubType() {
+            SuperType.call(this, name);
+        }
+        SubType.prototype = new SuperType();
+        // 四，原式继承
+        let person = {
+            name: "daqige",
+            age: 24,
+        }
+        function object(o) {
+            function F() { }
+            F.prototype = o;
+            return new F();
+        }
+        person1 = object(person);
+        // 五、寄生
+        function inherit(o) {
+            a = object(o);
+            a.sayAge = function () { console.log(this.age) };
+        }
+        person1 = inherit(person);
+
+        // 最佳
+        function Subtype() { SuperType.call(this, name, age) }
+        function best(SuperType, Subtype) {
+            // SubType.prototype = new SuperType(); 这一步让我们子类的原型里面也有了多余的name, age
+            function F() { }
+            F.prototype = SuperType.prototype;
+            SubType.prototype = new F();
+            // 
+        }
+        // 书中的方法只是封装了一下
+        function best(SuperType, SubType) {
+            let prototype = object(SuperType.prototype);
+            SubType.prototype = prototype;  // 这两行可以换一下
+            prototype.constructor = SubType;
+        }
+
+    </script>
+</body>
+
+</html>
