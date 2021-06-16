@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二叉树的最大深度</title>
+</head>
+
+<body>
+    <script>
+        function TreeNode(val, right, left) {
+            this.val = (val === undefined ? null : val);
+            this.right = (right === undefined ? null : right);
+            this.left = (left === undefined ? null : left);
+        }
+        // dfs 
+        function maxDeepth(root) {
+            if (root === null) return 0;
+            return Math.max(maxDeepth(root.left), maxDeepth(root)) + 1;
+        }
+        // bfs
+        function maxDeepth(root) {
+            let res = 0
+            let que = []
+            if (root === null) return 0
+            que.push(root)
+            while (que.length !== 0) {
+                let size = que.length
+                result++
+                for (let i = 0; i < size; i++) {
+                    let node = que.unshift()
+                    if (node.left !== null)
+                        que.push(node.left)
+                    if (node.right !== null)
+                        que.push(node.right)
+                }
+            }
+            return res
+        }
+        //
+
+    </script>
+</body>
+
+</html>
