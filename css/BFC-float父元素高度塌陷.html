@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子元素设置为float，父元素高度坍塌</title>
+    <!-- 如果父元素没有设置高度（想让盒子的内容来决定高度），子元素设置了浮动，那么就会出现高度坍塌。 -->
+    <!--    所以我们要清除浮动 , 创建一个bfc-->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .parent {
+            overflow: hidden;
+            width: 400px;
+            border: 2px solid blue;
+            background: lightgreen;
+            margin: 0 auto;
+
+        }
+
+        .child {
+            width: 50%;
+            border: 2px soild black;
+            float: left;
+            height: 400px;
+            background: red;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <p class="child">让我一次爱个够</p>
+    </div>
+</body>
+
+</html>
