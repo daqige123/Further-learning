@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的反转</title>
+</head>
+
+<body>
+    <script>
+        function myReverse1(str) {
+            // return str.reverse(); 字符串没有reverse方法。。。。。。。
+            return str.split('').reverse().join('');
+        }
+
+        // charAt() 
+        function myReverse2(str) {
+            let res = "";
+            for (let i = str.length - 1; i >= 0; i--)
+                res += str.charAt(i);
+            return res;
+        }
+
+        // 递归
+        function myReverse3(str) {
+            if (str === null || str.length <= 1)
+                return str;
+            return myReverse3(str.substring(1)) + str.charAt(0);
+
+        }
+
+        let str = "hello world!";
+        console.log(myReverse3(str))
+    </script>
+</body>
+
+</html>

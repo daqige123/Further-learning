@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两种快速排序方法</title>
+</head>
+
+<body>
+    <script>
+        // 标准的快速排序
+
+        function quickSort(arr, left, right) {
+            if (left < right) {
+                let i = left;
+                let j = right;
+                let pivot = arr[i];
+                while (i < j) {
+                    while (i < j && arr[j] >= pivot) j--;
+                    if (i < j) arr[i] = arr[j];
+                    while (i < j && arr[i] <= pivot) i++;
+                    if (i < j) arr[j] = arr[i];
+                }
+                arr[i] = pivot;
+                quickSort(arr, left, i - 1);
+                quickSort(arr, j + 1, right);
+            }
+        }
+
+        let arr = [2, 5, 6, 7, 3, 1, 0, -1, 100];
+        quickSort(arr, 0, arr.length - 1);
+        arr.forEach((item) => console.log(item))
+
+    </script>
+</body>
+
+</html>

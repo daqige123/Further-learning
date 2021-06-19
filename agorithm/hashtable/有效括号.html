@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有效括号</title>
+</head>
+
+<body>
+    <script>
+        let isValid = function (s) {
+            if (s.length % 2 !== 0) return false;
+            if (s.length === 0) return true;
+            let map = new Map();
+            map.set('(', ')').set('[', ']').set('{', '}');
+            let stack = [];
+            for (let i = 0; i < s.length; i++) {
+                let item = s[i];
+                if (map.has(item)) {
+                    stack.push(item);
+                } else {
+                    if (stack.length === 0) return false;
+                    let right = stack.pop();
+                    if (right !== map.get(right)) return false;
+                }
+            }
+            return stack.length === 0;
+        };
+
+        let s = "()";
+        let map = new Map();
+        let stack = []
+        map.set('(', ')').set('[', ']').set('{', '}');
+        for (let item of s) {
+            if (map.has(item)) {
+                stack.push(map.get(item));
+            } else {
+                if (stack.length === 0) console.log("di 40 hang");
+                let right = stack.pop();
+                if (right !== map.get(right)) {
+                    console.log("di 42 hang");
+                    console.log(map.get(right));
+                    console.log(right);
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
