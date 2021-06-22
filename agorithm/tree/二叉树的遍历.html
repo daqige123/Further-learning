@@ -71,8 +71,26 @@
             }
             return res;
         }
-
         // 层序遍历
+        function levelOrder(root) {
+            let res = [];
+            if (root === null) return res;
+            let que = [];
+            let cur = root;
+            que.push(cur);
+            while (que.length !== 0) {
+                let size = que.length;
+                let level = []
+                for (let i = 0; i < size; i++) {
+                    level.push(que[i].val);
+                    if (que[i].left !== null) que.push(que[i].left);
+                    if (que[i].right !== null) que.push(que[i].right);
+                    que.shift();
+                }
+                res.push(level);
+            }
+            return res;
+        }
 
     </script>
 </body>

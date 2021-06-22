@@ -10,7 +10,7 @@
 
 <body>
     <script>
-
+        // 地狱回调
         setTimeout(function () {
             console.log("第一个回调！");
             setTimeout(function () {
@@ -21,6 +21,8 @@
                 }, 1000)
             }, 1000)
         }, 1000);
+
+        // promise 更优雅
         let p1 = new Promise((p1, p2) => {
             setTimeout(p1, 1000)
         }).then(function () {
@@ -37,7 +39,7 @@
             return new Promise((p1, p2) => { setTimeout(p1, 1000) })
         })
 
-
+       //
 
 
     </script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+
+<body>
+    <script>
+        // 深拷贝的话，我们应该考虑他的类型：数组，对象，正则，null， 基本类型。
+        function deepclone(obj) {
+            if (obj === null || typeof obj !== 'object') return obj;
+
+            // Date 类型
+            if (obj instanceof Date) {
+                const date = new Date();
+                date.setTime(obj.getTime())
+                return date;
+            }
+
+            // 正则  RegExp
+            if (obj instanceof RegExp) {
+                return new obj.constructor(obj);
+            }
+
+            // 数组等引用类型的数据
+            if (obj instanceof Array || obj instanceof Object) {
+                const copyObj = Array.isArray(obj) ? [] : {};
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        copyObj[key] = deepclone(obj[key]);
+                    }
+                }
+                return copyobj;
+            }
+        }
+
+        const arr = [
+            { a: "wode" },
+            { b: new Date(), bb: new RegExp('\\w'), bbb: function () { console.log("bbb function") } },
+            { c: [null, undefined] },
+            { d: [{ da: 1, db: { bba: 123 } }] }
+        ]
+        let copyArr1 = JSON.parse(JSON.stringify(arr));
+        console.log(copyArr1);
+
+    </script>
+</body>
+
+</html>

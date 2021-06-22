@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流和防抖</title>
+    <style>
+        .test {
+            width: 450px;
+            height: 150px;
+            /* margin: 0 auto; */
+            top: center;
+            line-height: 150px;
+            text-align: center;
+            color: #fff;
+            background-color: #ccc;
+            font-size: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script>
+        let count = 0;
+        let test = document.querySelector(".test");
+        test.onmousemove = throttle(function (e) {
+            test.innerHTML = count++;
+        }, 1000)
+
+        function debounce(func, delay) {
+            let timeout;
+            return function () {
+                clearTimeout(timeout);  // 当事件连续触发后，就清除前面的timeout。
+                timeout = setTimeout(() => {
+                    func.apply(this, arguments)
+                }, delay)
+            }
+        }
+
+        function throttle(func, delay) {
+            let run = true;
+            return function () {
+                if (!run) {
+                    return;
+                }
+                run = false
+                setTimeout(() => {
+                    func.apply(this, arguments)
+                    run = true;
+                }, delay)
+            }
+        }
+
+    </script>
+</body>
+
+</html>

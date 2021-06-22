@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包的理解题</title>
+</head>
+<!-- 总结， 这个闭包的题其实就是在先调用外部函数，把作用域链创建出来，
+    然后通过将返回的闭包函数复制给一个变量（可以是return 返回给一个全局变量， 也可以是下面的 直接 fn= 闭包函数），这样由于外部的变量没有被销毁，作用域链得以保存 -->
+
+<body>
+    <script>
+        // function bar() {
+        //     console.log(myName)
+        // }
+        // function foo() {
+        //     var myName = " 极客邦 "
+        //     bar()
+        // }
+        // var myName = " 极客时间 "
+        // foo()
+
+        // var scope = "global scope";
+        // function checkscope() {
+        //     var scope = "local scope";
+        //     function f() {
+        //         return scope;
+        //     }
+        //     return f;
+        // }
+
+        // var foo = checkscope();  // 他执行了这个checkscope函数。并保存在变量foo中，所以 作用域链是 f的变量对象 ==> cheackscope的变量对象
+        // console.log(foo());
+
+
+        var fn = null;
+        function foo() {
+            var a = 2;
+            function innnerFoo() {
+                // console.log(c);
+                console.log(a);
+            }
+            fn = innnerFoo;  // 执行foo()后，这一步将fn的值改为了 innerFoo, 相当于保存到了fn变量里面，而fn没有销毁，所以 innerFoo的变量对象和foo的没有被销毁。
+        }
+
+        function bar() {
+            var c = 100;
+            fn();
+        }
+
+        foo();
+        bar();   // 
+    </script>
+</body>
+
+</html>
