@@ -28,35 +28,72 @@
 <body>
     <div class="test"></div>
     <script>
+        // let count = 0;
+        // let test = document.querySelector(".test");
+        // test.onmousemove = throttle(function (e) {
+        //     test.innerHTML = count++;
+        // }, 1000)
+
+        // function debounce(func, delay) {
+        //     let timeout;
+        //     return function () {
+        //         clearTimeout(timeout);  // 当事件连续触发后，就清除前面的timeout。
+        //         timeout = setTimeout(() => {
+        //             func.apply(this, arguments)
+        //         }, delay)
+        //     }
+        // }
+
+        // function throttle(func, delay) {
+        //     let run = true;
+        //     return function () {
+        //         if (!run) {
+        //             return;
+        //         }
+        //         run = false
+        //         setTimeout(() => {
+        //             func.apply(this, arguments)
+        //             run = true;
+        //         }, delay)
+        //     }
+        // }
+
+
+
+        // 防抖
         let count = 0;
         let test = document.querySelector(".test");
-        test.onmousemove = throttle(function (e) {
+        test.onmousemove = thor(function () {
             test.innerHTML = count++;
-        }, 1000)
+        }, 1000);
 
-        function debounce(func, delay) {
+        // 防抖就是一直触发事件，然后两s后执行， 然中间又触发了，就清华v处于
+        function dedounce(func, delay) {
             let timeout;
             return function () {
-                clearTimeout(timeout);  // 当事件连续触发后，就清除前面的timeout。
-                timeout = setTimeout(() => {
-                    func.apply(this, arguments)
-                }, delay)
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, arguments), delay);
             }
         }
 
-        function throttle(func, delay) {
-            let run = true;
+        function thor(func, delay) {
+            let flag = true;
             return function () {
-                if (!run) {
+                if (!flag) {
                     return;
                 }
-                run = false
+                flag = false;
                 setTimeout(() => {
                     func.apply(this, arguments)
-                    run = true;
-                }, delay)
+                    flag = true;
+                }, delay);
             }
         }
+
+
+
+
+
 
     </script>
 </body>

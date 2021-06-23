@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组求和</title>
+</head>
+
+<body>
+    <script>
+        function sum(arr) {
+            let sum = 0;
+
+            // for (let i = 0; i < arr.length; i++) sum = sum + arr[i];
+
+            // for (let i  in arr) sum = sum + arr[i];
+
+            // for (let i  of arr) sum += i;
+
+            // arr.forEach((item)=> sum = sum + item);
+
+            // arr.map(item => sum = sum + item);
+
+            // return arr.reduce((pre, cur, arr) => pre + cur);
+
+            return digui(arr);
+        }
+
+        function digui(arr) {
+            let len = arr.length;
+            if (len === 0) return 0;
+            else if (len === 1) return arr[0];
+            else if (len > 1) return arr[0] + digui(arr.slice(1));
+            return 0;
+        }
+
+    </script>
+</body>
+
+</html>
