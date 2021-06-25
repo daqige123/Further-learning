@@ -10,46 +10,9 @@
 
 <body>
     <script>
-        // function bar() {
-        //     console.log(myName)
-        // }
-        // function foo() {
-        //     var myName = " 极客邦 "
-        //     bar()
-        // }
-        // var myName = " 极客时间 "
-        // foo()
+        let a = function b() { }
 
-        var scope = "global scope";
-        function checkscope() {
-            var scope = "local scope";
-            function f() {
-                return scope;
-            }
-            return f;
-        }
-
-        var foo = checkscope;
-        console.log(foo());
-
-
-        // var fn = null;
-        // function foo() {
-        //     var a = 2;
-        //     function innnerFoo() {
-        //         console.log(c);
-        //         console.log(a);
-        //     }
-        //     fn = innnerFoo;
-        // }
-
-        // function bar() {
-        //     var c = 100;
-        //     fn();
-        // }
-
-        // foo();
-        // bar();
+        console.log(typeof a)
     </script>
 </body>
 
