@@ -64,14 +64,15 @@
         // 9.数组的迭代方法（条件迭代）
         /* 1. every(item, index, array) 每一个元素都满足条件，才返回true。 some(), 有一个或者多个都返回true;
            2. forEach() 对数组每一项都运行传入的函数，没有返回值,就是一个简单的for遍历。map(),会返回每一项运行的结果组成的数组。
-           3.filter() 对数组进行条件过滤，返回满足条件的item.
+           3. filter() 对数组进行条件过滤，返回满足条件的item.
         */
+
         let arr9 = [1, 2, 3, 4, 5, 4, 3, 2, 1];
         console.log(arr9.some((item, index, array) => item > 5)); // false
         console.log(arr9.forEach((item, index, array) => item + 1)); // undefined
         console.log(arr9.map((item, index, array) => item + 1));  //234565432
         console.log(arr9.filter((item, index, array) => item > 2));
-        // 注意map 是执返回函数执行的结果， fiter只能是数组中的元素。实验结果表明index, array可以不用写上。
+        // 注意map是返回每次表达式执行的结果， fiter只返回数组中满足条件的item。 实验结果表明index, array可以不用写上。
 
         // 10.数组的归并  reduce(), reduceRight()从右向左遍历元素。
         //redece(pre, cur, index, array) pre上一个归并值， 当前元素， 当前元素索引， 数组本身。

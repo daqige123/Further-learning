@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重的多种方法</title>
+</head>
+
+<body>
+    <script>
+        function unique1(arr) {   // ES6最常用
+            return Array.from(new Set(arr));
+        }
+        // 这个函数等价于[...new Set(arr)]
+        // [1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {…}, {…}] 并没有去除掉空对象{}。
+
+        function unique2(arr) {    // ES5最常用  使用两层for循环  splice
+            for (let i = 0; i < arr.length - 1; i++) {      // NaN 和 {} 不会被删除。
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[i] == arr[j]) {
+                        arr.splice(j, 1);
+                        j--;
+                    }
+                }
+            }
+            return arr;
+        }
+
+
+        function unique3(arr) {      //   indexof     
+            var res = [];
+            for (let i = 0; i < arr.length; i++) {   // NaN 和 {} 不会被删除。
+                if (res.indexOf(arr[i] == -1))
+                    array.push(arr[i]);
+            }
+            return res;
+        }
+        function unique4(arr) {  // include()
+            let res = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (!res.includes(arr[i])) res.push(arr[i]);
+            }
+            return array;
+        }
+
+        function unique5(arr) {  // sort
+            arr = arr.sort();
+            let res = [arr[0]];
+            for (let i = 1; i < res.length; i++) {
+                if (arr[i] !== arr[i - 1]) res.push(arr[i]);
+            }
+            return res;
+        }
+
+        function unique6(arr) {   // 利用 hasOwnProperty() 
+            let obj = {};
+            return arr.filter((item) => obj.hasOwnProperty(typeof item + item) ? false : obj[typeof item + item] = ture)
+
+        }
+
+        var arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 0, 0, 'a', 'a', {}, {}];
+        console.log(unique7(arr))
+
+        function unique7(arr) {  //递归去重   
+            if (arr.length == 1) return arr;  // 也没有除去{}
+            let a0 = arr[0];
+            arr.splice(0, 1);
+            if (arr.includes(a0)) return arguments.callee(arr);
+            else return [a0].concat(arguments.callee(arr));
+        }
+
+
+    </script>
+</body>
+
+</html>
