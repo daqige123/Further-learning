@@ -105,7 +105,6 @@ overflow: hidden;
 display: table-cell, block;
 position:fixed, absolute;
 这些属性都能触发bfc， 触发了bfc的容器就是页面上完全隔离开的容器，容器中的元素绝对不会影响到外面的元素。所以为了保证这个规则，触发了bfc的父元素在计算高度时，也会把浮动的子元素的高度也带上，就变相的实现了清楚浮动的目的。
-
 ```
 
 其他的解决父元素高度坍塌的方法：
@@ -191,4 +190,17 @@ position:fixed, absolute;
 1. 给其中一个元素加上一个父元素，然后给父元素设置BFC
 
 2. 将其中的一个的margin ,改为padding，这样就不会重合了
+
+#### 4.overflow的5个值：
+
+overflow属性的5个值
+visible→默认值，内容不会被剪切，内容会溢出显示在元素框之外
+
+hidden→内容会被剪切，溢出于元素框的内容不可见
+
+scroll→内容会溢出被你剪切，但会自动生成滚动条
+
+auto→内容如果溢出， 会自动生成滚动条
+
+inherit→继承父级的overflow值
 
