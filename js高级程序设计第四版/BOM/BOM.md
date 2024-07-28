@@ -4,7 +4,7 @@
 
 2. window.open("http://www.wrox.com", "topFrom")  这里的第二个参数是一个已经存在的窗口。
 
-3. 系统对话框   alert(), confirm()确认框， promt()提示框，一般用来提示用户输入信息。
+3. 系统对话框   alert(), confirm()··确认框， promt()提示框，一般用来提示用户输入信息。
 
 ### 路由的两种方式(实现页面的无刷新更新)
 
