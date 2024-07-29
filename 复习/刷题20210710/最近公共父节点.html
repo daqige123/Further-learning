@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function TreeNode(val, left, right) {
+            this.val = val === undefined ? null : val;
+            this.left = left === undefined ? null : left;
+            this.right = right === undefined ? null : right;
+        }
+
+        function rencentlyAnstor(root, p1, p2) {
+            if (root === p1 || root === p2) return root;
+            let left = rencentlyAnstor(root.left, p1, p2);
+            let right = rencentlyAnstor(root.right, p1, p2);
+            if (left === null) return right;
+            if (right === null) return left;
+            return root;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

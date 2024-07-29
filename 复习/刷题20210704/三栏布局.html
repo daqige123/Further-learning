@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三栏布局</title>
+    <!-- 三栏布局的核心考点 一般的三栏布局就是左右两栏固定宽度，然后中间的自适应 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .left {
+            position: absolute;
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .right {
+
+            position: absolute;
+            right: 0;
+            float: left;
+            margin-left: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .center {
+
+            /* position: fixed;
+            left: 200px;
+            right: 200px; */
+
+            /* margin-right: 10;
+            margin-left: 0; */
+
+            /* margin-left: 200px;
+            margin-right: 200px; */
+
+            height: 200px;
+            background-color: pink;
+            text-align: center;
+            line-height: 200px;
+
+        }
+
+        /* body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .right {
+
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .center {
+
+            width: 100%;
+            height: 200px;
+            background-color: pink;
+            text-align: center;
+            line-height: 200px;
+        } */
+    </style>
+</head>
+
+
+
+<body>
+    <div class="left">左div</div>
+    <div class="right">右div</div>
+    <div class="center">中div</div>
+</body>
+
+</html>

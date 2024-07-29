@@ -5,38 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二叉树的前序， 中序， 后序，层序遍历</title>
+    <title>二叉树的遍历</title>
 </head>
 
 <body>
     <script>
-        // function TreeNode(val, right, left) {
-        //     this.val = (val === undefined ? null : val);
-        //     this.right = (right === undefined ? null : right);
-        //     this.left = (left === undefined ? null : left);
-        // }
-        // 不如直接定义类
-        class TreeNode {
-            constructor(val, left, right ) {
-                this.val = val;
-                this.left = left;
-                this.right = right;
-            }
+        function TreeNode(val, left, right) {
+            this.val = val === undefined ? null : val;
+            this.left = left === undefined ? null : left;
+            this.right = right === undefined ? null : right;
         }
-        const node6 = new TreeNode(6, null, null);
-        const node5 = new TreeNode(5, null, node6);
-        const node4 = new TreeNode(4, null, null);
-        const node3 = new TreeNode(3, null, null);
-        const node2 = new TreeNode(2, null, node5);
-        const node1 = new TreeNode(1, node3, node4);
-        const root = new TreeNode(0, node1, node2);
-        // 前序遍历
+
         function preOrder(root) {
             let res = [];
             if (root === null) return res;
             let cur = root;
-            let stack = [];
-            while (cur !== null || stack.length !== 0) {
+            let satck = [];
+            while (cur !== null || satck.length !== 0) {
                 if (cur !== null) {
                     res.push(cur.val);
                     stack.push(cur.right);
@@ -45,16 +30,14 @@
                     cur = stack.pop();
                 }
             }
-            console.log(res);
+            return res;
         }
-        preOrder(root);
 
-        // 中序遍历
         function inOrder(root) {
             let res = [];
             if (root === null) return res;
-            let cur = root;
             let stack = [];
+            let cur = root;
             while (cur !== null || stack.length !== 0) {
                 if (cur !== null) {
                     stack.push(cur);
@@ -68,7 +51,6 @@
             return res;
         }
 
-        // 后续遍历
         function postOrder(root) {
             let res = [];
             if (root === null) return res;
@@ -81,39 +63,30 @@
                     cur = cur.right;
                 } else {
                     cur = stack.pop();
+
                     cur = cur.left;
                 }
             }
-            return res;
         }
-        // 层序遍历
         function levelOrder(root) {
             let res = [];
             if (root === null) return res;
             let que = [];
-            let cur = root;
-            que.push(cur);
+            que.push(root);
             while (que.length !== 0) {
                 let size = que.length;
-                let level = []
+                let temp = [];
                 for (let i = 0; i < size; i++) {
-                   
-                    // level.push(que[i].val);
-                    // if (que[i].left !== null) que.push(que[i].left);
-                    // if (que[i].right !== null) que.push(que[i].right);
-                    // que.shift(); 不能将shift放在最后面，因为如果放在最后，shift以后，下一个que(i)就不是第原来的第i个，是原来种第i+1个。可以修改为
-                    // 所以这里最好是用node来记录每一次弹出来的结点
                     let node = que.shift();
-                    level.push(node.val);
-                    if (node.left) que.push(node.left);
-                    if (node.right) que.push(node.right);
+                    tmp.push(node.val);
+                    if (node.left !== null) que.push(node.left);
+                    if (node.right !== null) que.push(node.right);
+
                 }
-                res.push(level);
+                res.push(temp);
             }
             return res;
         }
-
-
     </script>
 </body>
 

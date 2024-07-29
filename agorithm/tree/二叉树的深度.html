@@ -18,7 +18,7 @@
         // dfs 
         function maxDeepth(root) {
             if (root === null) return 0;
-            return Math.max(maxDeepth(root.left), maxDeepth(root)) + 1;
+            return Math.max(maxDeepth(root.left), maxDeepth(root.right)) + 1;
         }
         // bfs
         function maxDeepth(root) {
@@ -30,7 +30,7 @@
                 let size = que.length
                 result++
                 for (let i = 0; i < size; i++) {
-                    let node = que.unshift()
+                    let node = que.shift(); // 
                     if (node.left !== null)
                         que.push(node.left)
                     if (node.right !== null)

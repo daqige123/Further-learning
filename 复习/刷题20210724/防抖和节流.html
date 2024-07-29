@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖和节流</title>
+    <style>
+        .test {
+            width: 500px;
+            height: 500px;
+            background-color: gray;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 500px;
+            font-size: 50px;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">0</div>
+    <script>
+        let div = document.querySelector(".test");
+        let count = 0;
+        div.addEventListener("mousemove", jieliu(() => {
+            div.innerHTML = count++;
+        }, 1000));
+
+        function fangdou(func, delay) {
+            let timeout = null;
+            return function () {
+                clearTimeout(timeout);
+                setTimeout(() => {
+                    func.call(this, arguments);
+                }, delay)
+            }
+        }
+
+        // 节流： 点击多次，点击马上执行，一定时间过后再执行。
+        function jieliu(func, delay) {
+            let flag = true;
+            return function () {
+                if (!flag) {
+                    return;
+                }
+                flag = false;
+                setTimeout(() => {
+                    func.call(this, arguments);
+                    flag = true;
+                }, delay);
+            }
+        }
+    </script>
+</body>
+
+</html>

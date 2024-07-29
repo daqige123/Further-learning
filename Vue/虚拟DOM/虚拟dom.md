@@ -1,5 +1,3 @@
-### 虚拟dom
-
 #### 浏览器渲染html页面的过程
 
 大致分为五步： 创建DOM树---创建样式表---创建render树---布局Layout--Painting.
@@ -17,6 +15,42 @@
 
 ##### 注：如果用js去操作dom的话，马上就会向上面的步骤一样全部执行一遍。
 
-#### 重绘和回流
 
-#### 虚拟dom的
+
+#### 虚拟dom
+
+```js
+<div class="box">
+        <h3>我是一个标题</h3>
+        <ul>
+            <li>牛奶</li>
+            <li>咖啡</li>
+            <li>可乐</li>
+        </ul>
+    </div>
+    <script>
+        // 相当于:
+        let div = {
+            "sel": "div",
+            "data": {
+                "class": { "box": true }
+            },
+            "children": [{
+                "sel": "h3",
+                "data": {},
+                "text": "我是一个标题"
+            }, {
+                "sel": "ul",
+                "data": {},
+                "children": [
+                    { "sel": "li", "data": {}, "text": "牛奶" },
+                    { "sel": "li", "data": {}, "text": "咖啡" },
+                    { "sel": "li", "data": {}, "text": "可乐" },
+                ]
+            }]
+        }
+    </script>
+```
+
+##### diff算法就是让新的虚拟dom和老的虚拟dom对象进行精细化比较，算出如何最小量更新，最后反映到真实的DOM上。
+

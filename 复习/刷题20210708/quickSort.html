@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速排序</title>
+</head>
+
+<body>
+    <script>
+        function quickSort(low, high, arr) {
+            if (low < high) {
+                let i = low;
+                let j = high;
+                let povit = arr[i];
+                while (i < j) {
+                    while (i < j && arr[j] >= povit) j--;
+                    if (i < j) arr[i] = arr[j];
+                    while (i < j && arr[i] <= povit) i++;
+                    if (i < j) arr[j] = arr[i];
+                }
+                arr[i] = povit;
+                quickSort(low, i - 1, arr);
+                quickSort(j + 1, high, arr);
+            }
+        }
+        let arr = [1, 2, 13, 15, -6, 7, 8, 1];
+        quickSort(0, arr.length - 1, arr);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

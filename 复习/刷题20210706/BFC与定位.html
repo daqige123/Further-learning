@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- overflow竟然不能让定位的隔立开来。 -->
+    <style>
+        body {
+            position: relative;
+        }
+
+        .left {
+            position: fixed;
+            /* float: left; */
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: lightyellow;
+
+        }
+
+        .right {
+            overflow: hidden;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">左</div>
+    <div class="right">右</div>
+</body>
+
+</html>

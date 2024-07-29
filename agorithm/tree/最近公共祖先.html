@@ -21,8 +21,8 @@
             if (p1 === root || p2 === root) return root;
             let left = lastAncster(p1, p2, root.left);
             let right = lastAncster(p1, p2, root.right);
-            if (left == null) return right;
-            if (right == null) return left;
+            if (left === null) return right;
+            if (right === null) return left;
             return root;
         }
 

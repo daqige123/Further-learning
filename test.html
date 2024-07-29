@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<!-- 
+
+ -->
+
+<body>
+    <script>
+        function King() {
+            this.myname = "Henry";
+            // setTimeout(() => {
+            //     console.log(this);   // King
+            //     console.log(this.myname);  // henry
+            // }, 1000)
+            console.log(this);
+            setTimeout(function () {
+                console.log(this);
+                console.log(this.myname);
+            }, 1000)
+        }
+        new King();
+        // // new 操作符的五个步骤
+        // 1. 给实例分配一个空间。
+        // 2. 将实例的[Prototype]指向构造函数的原型。
+        // 3. 将实例的this指向构造函数。
+        // 4. 执行构造函数的代码（给实例添加属性）。
+        // 5，返回值
+    </script>
+</body>
+
+</html>

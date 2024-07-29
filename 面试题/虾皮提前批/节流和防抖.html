@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流和防抖</title>
+</head>
+
+<body>
+    <script>
+
+        // 防抖：主要有两个特点：
+        // 持续触发只执行一次。
+        // 不触发的一段时间之后再执行。
+        function func() {
+            console.log("woshi")
+        }
+        function debounce(func, delay) {
+            let timeout;  // 创建变量来标识定时器，方便清除。
+            console.log(this)    //window
+            return function () {
+                clearTimeout(timeout);
+                console.log(this);  // window
+                timeout = setTimeout(() => {
+                    console.log(this);
+                    func.call(this, arguments)  //func里面的this肯定是绑定的func 
+                }, delay);
+            }
+        }
+
+
+
+        // 节流：
+        //  持续触发只执行一次
+        // 触发就执行，然后过一段时间后再去执行第二次。
+
+    </script>
+</body>
+
+</html>

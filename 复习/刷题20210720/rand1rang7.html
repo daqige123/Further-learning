@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用rand5生成rand7</title>
+</head>
+<body>
+    <script>
+        // rand7 ==> 1 2 3 4 5 6 7 
+        // rand5 ==> 1 2 3 4 5  
+        
+        // 1.用rand7生成rand5
+        function rand7torand5() {
+            let num = rand7();
+            while (num > 5) {
+                num = rand7();
+            }
+            return num;
+        }
+
+        // 2. 用rand5生成rand7 
+        //  (rand5 - 1) * 5 就是 0-4 * 5 = 0, 5 , 10, 15, 20
+        //  (rand5 - 1) * 5 + rand5 : 随机生成  1 - 25
+        // 所以就相当与上面的情况了
+        function rang5torang7(){
+            let num = (rang5 - 1) * 5 + rand5();
+            while (num > 7) {
+                let num = (rang5 - 1) * 5 + rand5();
+            }
+            return num;
+        }
+        
+
+    </script>
+</body>
+</html>

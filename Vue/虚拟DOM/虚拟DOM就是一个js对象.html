@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虚拟DOM就是js对象</title>
+</head>
+
+<body>
+    <div class="box">
+        <h3>我是一个标题</h3>
+        <ul>
+            <li>牛奶</li>
+            <li>咖啡</li>
+            <li>可乐</li>
+        </ul>
+    </div>
+    <script>
+        // 相当于:
+        let div = {
+            "sel": "div",
+            "data": {
+                "class": { "box": true }
+            },
+            "children": [{
+                "sel": "h3",
+                "data": {},
+                "text": "我是一个标题"
+            }, {
+                "sel": "ul",
+                "data": {},
+                "children": [
+                    { "sel": "li", "data": {}, "text": "牛奶" },
+                    { "sel": "li", "data": {}, "text": "咖啡" },
+                    { "sel": "li", "data": {}, "text": "可乐" },
+                ]
+            }]
+        }
+    </script>
+</body>
+
+
+</html>

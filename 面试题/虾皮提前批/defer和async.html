@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defer和async</title>
+</head>
+<!-- 
+        直接使用script标签的话，html 会按照顺序来加载并执行脚本，在加载执行脚本的过程中，会阻碍后续的DOM渲染。
+        defer和async 都可以解决这个问题。
+
+        defer 推迟，延迟的意思. 浏览器会异步下载该文件，在文档解析和显示完成后，再执行脚本。若有有多个script都有 defer的话，那么按顺序执行script，前面的script执行完了，才能执行后面的.
+                也就是说大多数情况下，是多个defer脚本都加载完了，再按顺序执行。
+
+        async 异步。 那就是立即开始下载脚本，但是不能阻止其他页面动作，比如说下载资源或等待其它脚本加载。假如有多个async的话，谁先加载完，谁先执行。
+        https://www.cnblogs.com/jiasm/p/7683930.html
+     -->
+
+<body>
+</body>
+
+</html>

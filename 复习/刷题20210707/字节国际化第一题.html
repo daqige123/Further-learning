@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(a)  // 未声明， 会报错
+        a = "hello"   // 弱类型语言， 所以这里也会是window.a
+        function b() {
+            console.log(a)
+        }
+        b(); // hello
+        console.log(a) // hello
+    </script>
+</body>
+
+</html>

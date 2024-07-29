@@ -1,0 +1,52 @@
+console.log(a)
+a = "hello"
+function b() {
+console.log(a)
+}
+console.log(a)
+
+
+
+new Promise((r) => {
+    console.log(1)
+    r();
+setTimeout(() => {
+    console.log(4)
+})
+
+    console.log(2)
+});
+
+setTimeout(() => {
+    console.log(3)
+})
+
+
+
+查到一颗二叉树的层级 , 能换成空间复杂度为1的吗
+const getDeep = (node) => number;
+function getDeep(node) {
+    let queue = [];
+    if  (node.left === null || node.right == null) return 1;
+    queue.push(node);
+    let res = 0;
+    while (queue.length !== 0) {
+        let size = queue.length;
+        for (let i = 0; i < size; i++) {
+            let node = queue.unshift();
+            if (node.left !== null) queue.push(node.left);
+            if (node.right!== null) queue.push(node.right);
+        }
+        res++;
+    }
+    return res;
+}
+
+项目中遇到的最大的困难  flask的中间件解释一下，
+
+双向绑定 
+输入url 过程， 组件的通信， 
+
+闭包的作用，缺陷，怎样回收呢。
+
+重绘和回流
