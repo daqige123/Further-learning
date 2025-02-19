@@ -23,4 +23,4 @@ function zuichanghuiwenzichuan(s) {
     console.log(s.substring(left, right + 1))
     return s.substring(left, right);
 }
-zuichanghuiwenzichuan('cbbd');
+zuichanghuiwenzichuan('cb121bd');
