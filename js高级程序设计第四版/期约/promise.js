@@ -71,6 +71,36 @@ class MyPromise {
             }
         }, 0);
     }
+    static all(promises) {
+        return new MyPromise((resolve, reject) => {
+          const results = [];
+          let completed = 0;
+      
+          if (promises.length === 0) {
+            resolve(results);
+            return;
+          }
+      
+          promises.forEach((promise, index) => {
+            MyPromise.resolve(promise).then(value => {
+              results[index] = value; // 保持顺序的关键
+              completed++;
+              if (completed === promises.length) {
+                resolve(results);
+              }
+            }).catch(reject); // 任一失败立即终止
+          });
+        });
+    }
+    static race(promises) {
+        return new MyPromise((resolve, reject) => {
+          if (promises.length === 0) return; // 保持 pending 状态
+      
+          promises.forEach(promise => {
+            MyPromise.resolve(promise).then(resolve).catch(reject);
+          });
+        });
+    }
 }
 
 // 测试用例
