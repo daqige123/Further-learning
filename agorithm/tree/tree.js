@@ -8,13 +8,13 @@ class TreeNode {
 const node9 = new TreeNode(9, null, null);
 const node8 = new TreeNode(8, null, null);
 const node7 = new TreeNode(7, null, null);
-const node6= new TreeNode(6, null, null);
-const node5= new TreeNode(5, null, node6);
-const node4= new TreeNode(4, node8, null);
-const node3= new TreeNode(3, null, node7);
-const node2= new TreeNode(2, null, node5);
-const node1= new TreeNode(1, node3, node4);
-const root= new TreeNode(0, node1, node2);
+const node6 = new TreeNode(6, null, null);
+const node5 = new TreeNode(5, null, node6);
+const node4 = new TreeNode(4, node8, null);
+const node3 = new TreeNode(3, null, node7);
+const node2 = new TreeNode(2, null, node5);
+const node1 = new TreeNode(1, node3, node4);
+const root = new TreeNode(0, node1, node2);
 //        0
 //      1     2
 //   3    4     5
@@ -69,7 +69,7 @@ function preOrder(root) {
 //     console.log(res)
 // }
 function inOrder2(root) {
-    if (!root)  return;
+    if (!root) return;
     let stack = [], cur = root, res = [];
     while (stack.length || cur) {
         if (cur) {
@@ -96,16 +96,37 @@ function postOrder(root) {
 function postOrder2(root) {
     if (!root) return;
     let res = [], cur = root, stack = [];
-    while(cur || stack.length) {
+    while (cur || stack.length) {
         if (cur) {
             res.unshift(cur.value);
             stack.push(cur);
-            cur = cur.right; 
+            cur = cur.right;
         } else {
             cur = stack.pop();
             cur = cur.left;
         }
     }
     console.log(res)
+}
+
+function postOrder3(root) {
+    let stack = [], cur = root, res = [];
+    while (cur || stack.length) {
+        // 这种方式跟先续遍历几乎一模一样，方便记忆
+        if (cur) {
+            res.unshift(cur.val);
+            stack.push(cur.left);
+            cur = cur.right;
+        } else {
+            cur = stack.pop();
+        }
+        // if (cur) {
+        //     res.push(cur.val);
+        //     stack.push(cur.right);
+        //     cur = cur.left;
+        // } else {
+        //     cur = stack.pop();
+        // }
+    }
 }
 postOrder2(root);
