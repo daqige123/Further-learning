@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue2.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>obj.a = {{obj.a}} obj.b = {{obj.b}}</h1>
+        <button @click="arr[0] = 1">修改数组属性byindex监听不到</button>
+        <button @click="arr[0].test = 2">给数组里面已有的对象添加属性是不能被检测到的</button>
+        <button @click="arr[0].name = 'zhangsan'">只是修改数组里面已有的对象属性是能被检测到的</button>
+        <button @click="arr.push(7)">数组push</button>
+
+        <button></button>
+        <ul>
+            <li v-for="(item, index) in arr" :key="index">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    obj: { a: 1 },
+                    arr: [
+                        {
+                            name: '张三',
+                            age: 18
+                        },
+                        {
+                            name: '李四',
+                            age: 20
+                        },
+                        2, 3, 4, 5
+                    ]
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
