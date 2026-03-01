@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SSE Demo</title>
+</head>
+
+<body>
+    <h1>实时消息推送</h1>
+    <div id="messages"></div>
+
+    <script>
+        const eventSource = new EventSource("http://localhost:3000/sse");
+
+        // 接收消息
+        eventSource.onmessage = (event) => {
+            const messages = document.getElementById("messages");
+            messages.innerHTML += `[${new Date().toLocaleTimeString()}] ${event.data}<br>`;
+        };
+
+        // 错误处理
+        eventSource.onerror = () => {
+            console.error("连接异常，尝试重连...");
+            eventSource.close(); // 手动关闭后端会自动重连
+        };
+    </script>
+</body>
+
+</html>

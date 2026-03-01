@@ -1,0 +1,24 @@
+{
+  "name": "further-learning",
+  "version": "1.0.0",
+  "description": "#### 慢慢来，不急不急",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sse": "node ./SSE/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daqige123/Further-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daqige123/Further-learning/issues"
+  },
+  "homepage": "https://github.com/daqige123/Further-learning#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

@@ -11,4 +11,10 @@ function flat(arr, depth) {
 }
 const arr = [1, [[[1], 2, 3], 4], 5]
 
+function flat1(arr, depth) {
+    let result = [];
+    return arr.flat(depth);
+}
+
 console.log(flat(arr, 1));
+console.log(flat1(arr, 2));

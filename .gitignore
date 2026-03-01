@@ -1,0 +1,4 @@
+# 忽略所有层级的 node_modules 目录
+node_modules/
+.DS_Store
+# 忽略所有层级的 .DS_Store 文件
