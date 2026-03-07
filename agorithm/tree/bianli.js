@@ -15,7 +15,7 @@ const root = new TreeNode(0, node1, node2);
 //      0
 //    1    2
 //  3   4    5
- //            6
+//            6
 // 前序遍历
 function preOrder(root) {
     if (root) {
@@ -107,7 +107,7 @@ function levelOrder(root) {
         let size = que.length;
         let level = []
         for (let i = 0; i < size; i++) {
-           
+
             // level.push(que[i].val);
             // if (que[i].left !== null) que.push(que[i].left);
             // if (que[i].right !== null) que.push(que[i].right);
