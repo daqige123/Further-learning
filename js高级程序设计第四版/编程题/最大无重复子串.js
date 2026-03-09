@@ -1,16 +1,16 @@
-function bigNoRepeatesubstr(s) {
-    let left = 0, right = 0, start = 0, end = 0;
-    for (let i = 1; i < s.length; i++) {
-        if (!s.substring(start, i).includes(s[i])) {
-            end = i;
-            if (right - left < end - start) {
-                right = end;
-                left = start;
-            }
-        } else {
-            start = i;
-            end = i;
+const bigNoRepeatesubstr = function(s) {
+    let arr =[], max = 0;
+    for (let i=0; i< s.length; i++) {
+        const index = arr.indexOf(s[i]);
+        arr.push(s[i]);
+        if (arr.indexOf(s[i]) !== -1) {
+            arr.splice(0, index + 1);
+            // arr = arr.slice(index+1, arr.length); // 都是传入下标，左开右闭。
         }
+        max = Math.max(max, arr.length);
     }
-    return s.substring(left, right + 1);
-}
+    return max;
+};
+
+const a = 'sdds1012abcdefgp1';
+console.log(bigNoRepeatesubstr(a));
