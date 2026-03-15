@@ -6,7 +6,7 @@ function debounce(fn, delay) {
         console.log(timer);
         timer = setTimeout(()=> {
             fn.apply(this, arguments);
-            fn();
+            // fn(); 之所以不直接调用，用 apply 是为了绑定 this，万一是在对象的方法用，就会有问题。
         }, delay);
     }
 }
