@@ -1,0 +1,40 @@
+为什么跳槽？
+自己选一个最难的项目或者技术栈， ai 具体怎么做的？，skill 干了啥
+
+SSE 状态轮轮休？，状态怎么更新？ 生图是异步的，页面状态怎么维护的
+
+怎样性能优化？除了拆包，还有啥
+
+ssr的产物怎么部署的，怎么扩容，知道动态扩容么？
+
+ref 和 reactive 的区别？
+
+effect 里面结构一个 reactive 有响应式吗，怎样有响应式
+
+依赖收集发生在什么时候， 大概结构是啥样，全局weakmap 只有一个么？
+
+文件预览怎么防注入？
+
+了解 csp 吗，xss
+
+# 实现一个函数 asyncPool(limit, tasks, callback)，限制并发数为 limit，全部完成后执行 callback
+
+async function asyncPool(limit, tasks, callback) {
+    let curExe = [];
+    for (let i= 0; i < tasks.length; i++) {
+        let curTask = Promise.rosolve(tasks[i])();
+        curExe.push(curTask);
+        curTask().finnally(()=> {
+            let index =  curTask.indexof(curTask);
+            curExe.splice(index, 1,);
+        })
+        if (curExe.length >= limit) {
+            await Promise.race(curExe);
+        }
+    }
+    return Promise.all(curExe).then(callback);
+}
+
+foreach 能卡住么， 为什么不能
+
+有啥想问的？ 
