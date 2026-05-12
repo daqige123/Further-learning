@@ -10,6 +10,12 @@ function flat(arr, deepth) {
     }
     return res;
 }
+
+function flat2(arr, deepth) {
+    if (deepth === 0) return arr;
+    return [].concat(...arr.map(item => Array.isArray(item) ? flat(item, deepth - 1) : item));
+}
+
 const arr = [1, [[[1], 2, 3], 4], 5, [[[6], 7, 8], 4]];
-console.log(flat(arr, 1));
-console.log(flat(arr, 2));
+console.log(flat2(arr, 1));
+console.log(flat2(arr, 2));
