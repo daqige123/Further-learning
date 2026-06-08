@@ -1,0 +1,101 @@
+1.怎么设计 agent 的,有谁在用吗，有落地吗？
+2.如果只有 prompt，上下文怎么处理
+3.有什么评价指标来验证好不好
+4.i18n里面怎么设计的
+5.ppt 生成有用 sse，sse 为什么会乱序。
+6。有了解其他的agent 框架么
+7。能接受其他岗位比如服务端的工作么？除了 js 还有啥编程技能
+
+编程题：
+请实现惰性计算能力lazy，具有add,tap,delay,multiply,output等方法，支持链式调用，所有方法延迟执行，只有在调用output方法的时候才执行所有方法，并输出结果。
+测试用例：
+const work = lazy(2) // 初始化对象
+  .add(2) // 原有数值增加指定数值
+  .tap(console.log) // 以当前数值为参数执行回调函数
+  .delay(1000) // 暂停指定时间
+  .multiply(3) // 原有数值乘以指定数值
+
+setTimeout(() => {
+  work.output(); // 执行所有方法并输出最终结果
+}, 1000);
+
+console.log('start');
+start
+(等待1s,无输出)
+4
+(等待1s，无输出)
+12
+
+可以用一个tasks参数将每次需要执行的任务预存起来，在最终执行output方法的时候依次进行遍历执行；
+为了支持链式调用可以每个方法都返回this；
+delay方法可以用无限循环同步处理或者使用定时器异步处理。
+
+同步阻塞处理方式
+function lazy(initial) {
+  return new LazyImpl(initial);
+}
+
+function LazyImpl(init) {
+  this.num = init;
+  this.tasks = [];
+}
+LazyImpl.prototype.add = function (addi) {
+  this.tasks.push(() => {
+    this.num += addi;
+  })
+  return this;
+}
+
+LazyImpl.prototype.tap = function (callback) {
+  this.tasks.push(() => {
+    if (typeof callback === 'function') {
+      callback(this.num);
+    }
+  });
+  return this;
+}
+
+LazyImpl.prototype.delay = function (delayTime) {
+  this.tasks.push(() => {
+    let startTime = new Date().getTime();
+    let stopFlag = false;
+    while (!stopFlag) {
+      if (new Date().getTime() - startTime > delayTime) {
+        stopFlag = true;
+      }
+    }
+  });
+  return this;
+}
+
+LazyImpl.prototype.multiply = function (mult) {
+  this.tasks.push(() => {
+    this.num *= mult;
+  });
+  return this;
+}
+
+LazyImpl.prototype.output = function () {
+  for (let task of this.tasks) {
+    task(this.num);
+  }
+  console.log(this.num);
+}
+
+LazyImpl.prototype.delay = function (delayTime) {
+  this.tasks.push(() => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, delayTime);
+    });
+  });
+  return this;
+}
+异步非阻塞处理方式
+LazyImpl.prototype.output = async function () {
+  for (let task of this.tasks) {
+    await task(this.num);
+  }
+  console.log(this.num);
+}
